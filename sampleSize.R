@@ -1,4 +1,6 @@
 # Correction factor
+# r = w (in slide notation)
+# p = v
 R <- function(r, p, rho) {
   l1 <- (1 + (r - 1) * rho) / r
   l2 <- (p * rho^2) / (1 + (p - 1) * rho)
@@ -33,8 +35,8 @@ ggplot(aes(x = factor(r), y = n, colour = factor(p)), data = rp) +
   geom_line(aes(group = factor(p))) +
   scale_y_continuous(labels = scales::percent) +
   labs(
-    colour = "v (Number of baseline measurements)",
-    y = "w (Number of follow-up measurements)",
-    x = "Sample size relative to a trial with v = 1 and w = 1"
+    colour = "v (Number of baseline / pre-follow-up measurements)",
+    x = "w (Number of follow-up measurements)",
+    y = "Sample size relative to a trial with v = 1 and w = 1"
   ) +
   theme(legend.position = "bottom")
